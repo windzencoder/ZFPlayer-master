@@ -44,6 +44,7 @@
 // 哪些页面支持自动转屏
 - (BOOL)shouldAutorotate{
     
+    //获取跟控制器，这里为UINavigationController
     UINavigationController *nav = self.viewControllers[self.selectedIndex];
     
     // MoviePlayerViewController 、ZFTableViewController 控制器支持自动转屏

@@ -22,7 +22,9 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-
+/**
+ *  播放器控制器
+ */
 @interface MoviePlayerViewController : UIViewController
 /** 视频URL */
 @property (nonatomic, strong) NSURL *videoURL;

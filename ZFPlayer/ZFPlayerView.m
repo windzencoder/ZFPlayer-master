@@ -365,7 +365,7 @@ typedef NS_ENUM(NSInteger, ZFPlayerState) {
         videoURL = [NSURL fileURLWithPath:ZFFileFullpath(videoURL.absoluteString)];
     }
     
-    // 播放开始之前（加载中）设置站位图
+    // 播放开始之前（加载中）设置站位图 bundle里面的图片
     UIImage *image = [UIImage imageNamed:ZFPlayerSrcName(@"loading_bgView")];
     self.layer.contents = (id) image.CGImage;
     
@@ -421,7 +421,7 @@ typedef NS_ENUM(NSInteger, ZFPlayerState) {
         self.isLocalVideo = YES;
         self.controlView.downLoadBtn.enabled = NO;
     } else {
-        self.state = ZFPlayerStateBuffering;
+        self.state = ZFPlayerStateBuffering;//缓冲状态
         self.isLocalVideo = NO;
     }
     // 开始播放
@@ -992,6 +992,7 @@ typedef NS_ENUM(NSInteger, ZFPlayerState) {
     ZFPlayerShared.isLockScreen       = NO;
     self.controlView.lockBtn.selected = NO;
     self.isLocked = NO;
+    //强制屏幕旋转向上
     [self interfaceOrientation:UIInterfaceOrientationPortrait];
 }
 
@@ -1687,7 +1688,7 @@ typedef NS_ENUM(NSInteger, ZFPlayerState) {
     if (!_controlView) {
         _controlView = [[ZFPlayerControlView alloc] init];
         [self addSubview:_controlView];
-        [_controlView mas_makeConstraints:^(MASConstraintMaker *make) {
+        [_controlView mas_makeConstraints:^(MASConstraintMaker *make) {//添加约束
             make.top.leading.trailing.bottom.equalTo(self);
         }];
     }
