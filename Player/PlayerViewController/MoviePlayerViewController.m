@@ -29,6 +29,9 @@
 
 @interface MoviePlayerViewController ()
 
+/**
+ *  width / height 16:9
+ */
 @property (weak, nonatomic) IBOutlet ZFPlayerView *playerView;
 
 @end
@@ -44,6 +47,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    //设置状态栏和导航栏
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     self.navigationController.navigationBarHidden = YES;
 }

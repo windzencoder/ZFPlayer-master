@@ -62,7 +62,7 @@
     if ([nav.topViewController isKindOfClass:[MoviePlayerViewController class]]) { // MoviePlayerViewController这个页面支持转屏方向
         return UIInterfaceOrientationMaskAllButUpsideDown;
     }else if ([nav.topViewController isKindOfClass:[ZFTableViewController class]]) { // ZFTableViewController这个页面支持转屏方向
-        if (ZFPlayerShared.isAllowLandscape) {
+        if (ZFPlayerShared.isAllowLandscape) {//允许横屏
             return UIInterfaceOrientationMaskAllButUpsideDown;
         }else {
             return UIInterfaceOrientationMaskPortrait;

@@ -59,6 +59,8 @@
         toolbar.alpha = 0.97;
         [self addSubview:toolbar];
         
+        
+        //☀️图标
 		self.backImage = ({
             UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 79, 76)];
             imgView.image        = [UIImage imageNamed:ZFPlayerSrcName(@"playgesture_BrightnessSun6")];
@@ -76,6 +78,8 @@
 			title;
 		});
 		
+        
+        //亮度显示条
 		self.longView = ({
             UIView *longView         = [[UIView alloc]initWithFrame:CGRectMake(13, 132, self.bounds.size.width - 26, 7)];
             longView.backgroundColor = [UIColor colorWithRed:0.25f green:0.22f blue:0.21f alpha:1.00f];
@@ -92,7 +96,7 @@
 	return self;
 }
 
-// 创建 Tips
+// 创建 Tips 亮度显示块
 - (void)createTips {
 	
 	self.tipArray = [NSMutableArray arrayWithCapacity:16];
@@ -109,10 +113,12 @@
 		[self.longView addSubview:image];
 		[self.tipArray addObject:image];
 	}
+    //调整亮度
 	[self updateLongView:[UIScreen mainScreen].brightness];
 }
 
 #pragma makr - 通知 KVO
+//屏幕变化后的通知
 - (void)addNotification {
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self
@@ -121,6 +127,7 @@
 											   object:nil];
 }
 
+//kvo观察器 观察brightness的变化
 - (void)addObserver {
 	
 	[[UIScreen mainScreen] addObserver:self
@@ -151,6 +158,8 @@
 	}
 }
 
+
+//隐藏亮度的动画
 - (void)disAppearSoundView {
 	
 	if (self.alpha == 1.0) {
@@ -163,6 +172,7 @@
 }
 
 #pragma mark - Timer Methond
+//定时器
 - (void)addtimer {
 	
 	if (self.timer) {
@@ -234,6 +244,7 @@
 		}
 	}
 	
+    //在self中居中
 	self.backImage.center = CGPointMake(155 * 0.5, 155 * 0.5);
 }
 

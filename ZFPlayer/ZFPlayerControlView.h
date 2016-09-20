@@ -26,6 +26,9 @@
 typedef void(^ChangeResolutionBlock)(UIButton *button);
 typedef void(^SliderTapBlock)(CGFloat value);
 
+/**
+ *  player的控制层view
+ */
 @interface ZFPlayerControlView : UIView
 
 /** 开始播放按钮 */

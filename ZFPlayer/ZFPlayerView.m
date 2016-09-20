@@ -874,6 +874,7 @@ typedef NS_ENUM(NSInteger, ZFPlayerState) {
  */
 - (void)onDeviceOrientationChange
 {
+    //表示锁定了屏幕，不允许发生旋转
     if (self.isLocked) {
         self.isFullScreen = YES;
         return;
@@ -1370,6 +1371,7 @@ typedef NS_ENUM(NSInteger, ZFPlayerState) {
             // 如果点击了暂停按钮
             if (self.isPauseByUser) return ;
             [self play];
+            //isPlaybackLikelyToKeepUp会继续播放 不会被卡住
             if (!self.playerItem.isPlaybackLikelyToKeepUp && !self.isLocalVideo) {
                 self.state = ZFPlayerStateBuffering;
             }
@@ -1427,7 +1429,7 @@ typedef NS_ENUM(NSInteger, ZFPlayerState) {
         case UIGestureRecognizerStateChanged:{ // 正在移动
             switch (self.panDirection) {
                 case PanDirectionHorizontalMoved:{
-                    [self horizontalMoved:veloctyPoint.x]; // 水平移动的方法只要x方向的值
+                    [self horizontalMoved:veloctyPoint.x]; // 水平移动的方法只要x方向的值 快进或者快退
                     break;
                 }
                 case PanDirectionVerticalMoved:{
@@ -1481,7 +1483,7 @@ typedef NS_ENUM(NSInteger, ZFPlayerState) {
 }
 
 /**
- *  pan垂直移动的方法
+ *  pan垂直移动的方法 调整声音或者亮度
  *
  *  @param value void
  */
@@ -1493,10 +1495,11 @@ typedef NS_ENUM(NSInteger, ZFPlayerState) {
 /**
  *  pan水平移动的方法
  *
- *  @param value void
+ *  @param value x方向的值
  */
 - (void)horizontalMoved:(CGFloat)value
 {
+    NSLog(@"pan水平value值： %f", value);
     // 快进快退的方法
     NSString *style = @"";
     if (value < 0) { style = @"<<"; }

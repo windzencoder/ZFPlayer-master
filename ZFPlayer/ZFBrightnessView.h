@@ -23,6 +23,11 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ *  ZFBrightnessView是一个显示亮度的view，初始化时alpha为0
+ *  通过kvo观察亮度值的变化，调节自己显示的值
+ *  注册屏幕旋转的通知，调整自己的显示
+ */
 @interface ZFBrightnessView : UIView
 
 /** 调用单例记录播放状态是否锁定屏幕方向*/

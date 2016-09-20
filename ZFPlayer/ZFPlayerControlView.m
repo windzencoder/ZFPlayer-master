@@ -90,6 +90,7 @@
         [self makeSubViewsConstraints];
         // 分辨率btn点击
         [self.resolutionBtn addTarget:self action:@selector(resolutionAction:) forControlEvents:UIControlEventTouchUpInside];
+        //slider的点击事件
         UITapGestureRecognizer *sliderTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapSliderAction:)];
         [self.videoSlider addGestureRecognizer:sliderTap];
         
